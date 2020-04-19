@@ -7,6 +7,7 @@ Unique allows for the creation of a **"Deterministic Guid"** which will be uniqu
 In C# `using Unique.CSharp` you can use `NamedGuid.NewGuid` to generate a new Guid. You can check the version of the generated `Guid` by passing a `Guid` to `Version`.
 
 ```csharp
+// C# example
 using Unique.CSharp;
 //...
 // Use the pre-defined DNS namespace
@@ -35,6 +36,7 @@ Console.WriteLine($"Version is {version}");
 If you need to generate using a `byte[]` or change the algorithm, use the functions found on `Unique.NamedGuid`, `Unique.NS` and `Unigue.Algorithm`.
 
 ```fsharp
+// F# example
 let guid = NamedGuid.newGuid Algorithm.MD5 NS.DNS "www.example.com"
 // val: 5df41881-3aed-3515-88a7-2f4a814cf09e
 ```
