@@ -72,14 +72,17 @@ module NS =
     let private url = "6ba7b811-9dad-11d1-80b4-00c04fd430c8"
     [<Literal>]
     let private oid = "6ba7b812-9dad-11d1-80b4-00c04fd430c8"
+    [<Literal>]
+    let private x500 = "6ba7b814-9dad-11d1-80b4-00c04fd430c8"
     
     type Namespace =
         | DNS
         | URL
         | OID
+        | X500
         | Custom of System.Guid
     let memoize fn =
-        let cache = new System.Collections.Generic.Dictionary<_,_>()
+        let cache = System.Collections.Generic.Dictionary<_,_>()
         (fun x ->
         match cache.TryGetValue x with
         | true, v -> v
@@ -90,6 +93,7 @@ module NS =
         | DNS -> Guid.Parse(dns)
         | URL -> Guid.Parse(url)
         | OID -> Guid.Parse(oid)
+        | X500 -> Guid.Parse(x500)
         | Custom guid -> guid
     
     let toGuid = memoize toGuid'
@@ -117,7 +121,7 @@ module Hash =
         | SHA1 -> 5
         | MD5 -> 3
 
-module Guid =
+module NamedGuid =
     open System
     
     let empty = Guid.Empty
@@ -173,7 +177,7 @@ module Guid =
         | [false;true;false;true]  -> 5
         | _ -> 0
         
-    let namedGuidFromBytes algorithm ns (name:string) =
+    let newGuidFromBytes algorithm ns (name:string) =
         let version = Hash.version algorithm
         //Step 1: Allocate a UUID to use as a "name space ID". 3b. Put the name space ID in network byte order.
         let nsBs = ns|> NS.toGuid |> toByteArray |> orderBytes
@@ -188,19 +192,27 @@ module Guid =
         // Step 13: Convert the resulting UUID to local byte order.
         |> orderBytes
         
-    let namedGuid algorithm ns (name:string) =
-        namedGuidFromBytes algorithm ns name |> Guid
+    let newGuid algorithm ns (name:string) =
+        newGuidFromBytes algorithm ns name |> Guid
         
-namespace System
-    module Guid =
+namespace Unique.CSharp
+
+    module SpaceId =
+        open Unique
+        let DNS = NS.DNS |> NS.toGuid
+        let URL = NS.URL |> NS.toGuid
+        let OID = NS.OID |> NS.toGuid
+        
+    module NamedGuid =
         open Unique.NS
-        [<CompiledName("NamedGuid")>]
-        let namedGuid nsGuid name =
+        
+        let NewGuid nsGuid name =
             match nsGuid with
-            | g when g = (DNS |> toGuid) -> Unique.Guid.namedGuid Unique.Hash.SHA1 Unique.NS.DNS name
-            | g when g = (URL |> toGuid) -> Unique.Guid.namedGuid Unique.Hash.SHA1 Unique.NS.URL name
-            | g when g = (OID |> toGuid) -> Unique.Guid.namedGuid Unique.Hash.SHA1 Unique.NS.OID name
-            | _ -> Unique.Guid.namedGuid Unique.Hash.SHA1 (Unique.NS.Custom nsGuid) name
+            | g when g = (DNS |> toGuid) -> Unique.NamedGuid.newGuid Unique.Hash.SHA1 Unique.NS.DNS name
+            | g when g = (URL |> toGuid) -> Unique.NamedGuid.newGuid Unique.Hash.SHA1 Unique.NS.URL name
+            | g when g = (OID |> toGuid) -> Unique.NamedGuid.newGuid Unique.Hash.SHA1 Unique.NS.OID name
+            | _ -> Unique.NamedGuid.newGuid Unique.Hash.SHA1 (Unique.NS.Custom nsGuid) name
             
-        [<CompiledName("Version")>]
-        let version = Unique.Guid.version
+        let Version guid = Unique.NamedGuid.version guid
+        
+    
