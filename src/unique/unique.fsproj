@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
+    <PackageId>unique</PackageId>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RepositoryUrl>https://github.com/dburriss/unique</RepositoryUrl>
+    <Description>Unique allows for the creation of a "Deterministic Guid" which will be unique in a SpaceId over time with a high probability. The same Guid will be generated for a given Namespace ID and name.</Description>
+    <Authors>Devon Burriss</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Devon Burriss</Copyright>
+    <Version>0.0.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>GUID</PackageTags>
+    <Title>unique</Title>
   </PropertyGroup>
+  
   <ItemGroup>
     <Compile Include="Library.fs" />
   </ItemGroup>
