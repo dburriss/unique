@@ -49,6 +49,7 @@ let ``sanity check`` () =
     
 [<Fact>]
 //[<Fact(Skip = "This is for manual run to check no major performance issues introduced")>]
+[<Category("performance")>]
 let ``newGuid performance gate`` () =
     let dnsGuid = NS.DNS |> NS.toGuid
     let watch = Stopwatch.StartNew()
@@ -58,8 +59,8 @@ let ``newGuid performance gate`` () =
     do watch.Stop()
     test <@ watch.ElapsedMilliseconds < 10L @>
     
-// [<Fact>]
-[<Fact(Skip = "This is for manual run to check no major performance issues introduced")>]
+[<Fact>]
+//[<Fact(Skip = "This is for manual run to check no major performance issues introduced")>]
 [<Category("performance")>]
 let ``check memoize doing its job`` () =
     let watch = Stopwatch.StartNew()
