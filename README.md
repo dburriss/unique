@@ -1,5 +1,8 @@
 # unique
 
+[![Tests](https://github.com/dburriss/unique/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/dburriss/unique/actions/workflows/build-and-test.yml)
+[![Nuget](https://img.shields.io/nuget/v/unique)](https://www.nuget.org/packages/unique/)
+
 Unique allows for the creation of a **"Deterministic Guid"** which will be unique in a SpaceId over time with a high probability. The same `Guid` will be generated for a given **Namespace ID** and **name**.
  
 ## Usage
