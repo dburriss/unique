@@ -44,4 +44,4 @@ jobs:
       run: dotnet build --configuration $config --no-restore
     
     - name: Test
-      run: dotnet test --no-restore --verbosity normal --filter purpose!=performance
+      run: dotnet test --no-restore --verbosity normal --filter "purpose!=performance"
