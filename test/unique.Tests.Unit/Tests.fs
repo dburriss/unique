@@ -58,6 +58,7 @@ let ``newGuid performance gate`` () =
     test <@ watch.ElapsedMilliseconds < 10L @>
     
 [<Fact>]
+[<Trait("purpose","performance")>]
 //[<Fact(Skip = "This is for manual run to check no major performance issues introduced")>]
 let ``check memoize doing its job`` () =
     let watch = Stopwatch.StartNew()
