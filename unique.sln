@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{A1897E3C-DE89-48BE-9E61-9363F2B2F629}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{318E8973-BED8-4124-A1D6-4E0769493044}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "unique", "src\unique\unique.fsproj", "{0CDB06A5-D4F6-4B76-9C46-35A98CAB20EB}"
