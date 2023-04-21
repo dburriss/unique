@@ -15,6 +15,10 @@
     <PackageTags>GUID</PackageTags>
     <Title>unique</Title>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
   
   <ItemGroup>
     <Compile Include="Library.fs" />
