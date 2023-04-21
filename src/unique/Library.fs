@@ -215,4 +215,3 @@ namespace Unique.CSharp
             
         let Version guid = Unique.NamedGuid.version guid
         
-    
