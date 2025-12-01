@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <PackageId>unique</PackageId>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryUrl>https://github.com/dburriss/unique</RepositoryUrl>
     <Description>Unique allows for the creation of a "Deterministic Guid" which will be unique in a SpaceId over time with a high probability. The same Guid will be generated for a given Namespace ID and name.</Description>
