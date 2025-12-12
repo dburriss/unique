@@ -58,9 +58,8 @@ jobs:
       - name: Restore dependencies with lock files
         run: dotnet restore --locked-mode
 
-      # Install dotnet-format tool globally for code formatting support
-      - name: Install dotnet-format tool
-        run: dotnet tool install -g dotnet-format
+      # Note: dotnet format is built into .NET SDK 6+ and available via 'dotnet format' command
+      # No separate installation is needed as it's included with the SDKs we've installed above
 
       # Validate that the setup works by building all projects
       - name: Build validation
