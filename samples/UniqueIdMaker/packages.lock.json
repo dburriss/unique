@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net6.0": {
+      "FSharp.Core": {
+        "type": "Transitive",
+        "resolved": "10.0.100",
+        "contentHash": "vWHaY4Pk7mUv5gJN9+rbods+QnPjhrw3sdGw2R9pFLIBzHkkN26eMgubPHZVoS7xwLA9TZuoHGLrboY5QOBcdA=="
+      },
+      "unique": {
+        "type": "Project",
+        "dependencies": {
+          "FSharp.Core": "[10.0.100, )"
+        }
+      }
+    }
+  }
+}
